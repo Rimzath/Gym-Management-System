@@ -1,6 +1,8 @@
 package gym_management_system.controller;
 
+import gym_management_system.dto.request.LoginRequest;
 import gym_management_system.dto.request.RegisterRequest;
+import gym_management_system.dto.response.LoginResponse;
 import gym_management_system.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,5 +20,12 @@ public class AuthController {
     ) {
 
         return userService.register(request);
+    }
+    @PostMapping("/login")
+    public LoginResponse login(
+            @RequestBody LoginRequest request
+    ) {
+
+        return userService.login(request);
     }
 }
