@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
                                 request.getPassword()
                         )
                 )
+                .role(request.getRole())
                 .build();
 
         userRepository.save(user);
@@ -68,6 +69,7 @@ public class UserServiceImpl implements UserService {
 
         return LoginResponse.builder()
                 .token(token)
+                .role(user.getRole().name())
                 .build();
     }
 }
